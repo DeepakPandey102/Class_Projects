@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pseudo Selectors & Banana</title>
+  <style>
+    /* Original Banana Styles */
+    p:hover {
+      background-color: #ff8; /* Changes background when mouse hovers */
+    }
+    li::first-letter {
+      color: red; /* Colors only the first letter of list items */
+    }
+    li:nth-child(even) {
+      background-color: gray; /* Applies background to even-numbered list items */
+    }
+    li:nth-child(2) {
+      color: green; /* Applies color specifically to the 2nd child */
+    }
+    li:last-child {
+      color: blue; /* Targets the last child of the list */
+    }
+    p {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    li {
+      list-style: square;
+      font-size: 30px;
+      list-style: none;
+      margin: 10px;
+      font-family: sans-serif;
+    }
+
+    /* Page Styling */
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f7f9fc;
+      padding: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .section {
+      background: #fff;
+      border-left: 6px solid #4b9;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .selector, .example {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .selector p, .example p {
+      margin: 4px 0;
+    }
+
+    .emoji {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .quick-summary {
+      background-color: #eef;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 6px solid #339;
+      margin-top: 30px;
+    }
+    
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    /* Example specific styles */
+    .example-area button:active {
+      background-color: #f33;
+      color: white; /* Styles button while it's being clicked */
+    }
+
+    .example-area input:focus {
+      border: 2px solid green;
+      outline: none; /* Styles input box when user selects/focuses it */
+    }
+
+    .example-area a:visited {
+      color: purple; /* Styles visited link */
+    }
+
+    .example-area a:link {
+      color: blue; /* Styles normal unvisited link */
+    }
+
+    .example-area li::before {
+      content: "👉 "; /* Adds symbol before each list item */
+    }
+
+    .example-area .before-example::before {
+      content: "★ ";
+      color: orange; /* Adds icon before paragraph using ::before */
+    }
+
+    .example-area .after-example::after {
+      content: " ✅";
+      color: green; /* Adds icon after paragraph using ::after */
+    }
+
+    .example-area p::first-line {
+      font-weight: bold; /* Makes only the first line bold */
+    }
+
+    /* Exam Question Styles */
+    .exam {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff6e5;
+      border-left: 6px solid #f90;
+      border-radius: 10px;
+      font-size: 14px; /* Reduced font size */
+    }
+    .box01{
+        border-radius: 2px;
+        border-style: solid;
+        border-color: red;
+        padding: 30px;
+        margin: 25px;
+        width: 70px;
+        height: 30px;
+    }
+
+    .exam h3 {
+      margin-top: 0;
+    }
+    .banana:active{ border-color: green;}
+
+    
+    .banana{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+        padding: 10px;
+          border: 2px solid transparent; /* reserve space for border */
+  box-sizing: border-box; /* includes border in element size */
+    }
+    .box{
+        width: 100px;
+        height: 50px;
+        border-style: solid;
+        border-color: rgb(68, 40, 105);
+        padding: 1px;
+        border-radius: 5px;
+        background-color: rgb(149, 149, 157);
+        
+    }
+    .boxx{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        background-color: #4b9;
+
+
+    }
+    a{
+        text-decoration: none;
+        
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banana Section -->
+  <h2>Banana</h2>
+  <p class="banana"><img src="banana1.png" alt="Banana"></p>
+  <ul>
+    <li>Hi This is me.</li>
+    <li>Lets learn.</li>
+    <li>Today's weather is really hot.</li>
+    <li> I am learning Pseudo selector.</li>
+  </ul>
+
+  <!-- Pseudo Selectors Guide Section -->
+  <div class="section">
+    <div class="emoji">🎮 1. Dynamic UI Interactions</div>
+    <p>These respond when users do something (like hovering or clicking).</p>
+    <div class="selector">
+      <p>🔸 <code>:hover</code> – Applies style when user hovers over an element.</p>
+      <p>🔸 <code>:active</code> – Applies style when element is being clicked.</p>
+      <p>🔸 <code>:focus</code> – Applies style when element (like input) is focused.</p>
+    </div>
+    <div class="example example-area">
+      <p><strong>Examples:</strong></p>
+      <button>Click Me</button>
+      <input type="text" placeholder="Focus on me" />
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="emoji">🔗 2. Link States</div>
+    <p>These apply only to anchor (<code>&lt;a&gt;</code>) links.</p>
+    <div class="selector">
+      <p>🔹 <code>:link</code> – Targets unvisited links only.</p>
+      <p>🔹 <code>:visited</code> – Targets links already visited by the user.</p>
+    </div>
+    <div class="example example-area">
+      <p><strong>Example:</strong> <a href="https://www.google.com" target="_blank">Visit google.com</a></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="emoji">🏗️ 3. Structure-Based Selectors</div>
+    <p>These depend on position in HTML structure.</p>
+    <div class="selector">
+      <p>🧒 <code>:first-child</code> – Targets the first child element inside a parent.</p>
+      <p>👶 <code>:last-child</code> – Targets the last child element inside a parent.</p>
+      <p>➕ <code>:nth-child(odd/even)</code> – Selects elements based on number position (odd/even).</p>
+    </div>
+    <div class="example example-area">
+      <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        <li>Dragonfruit</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="emoji">🧩 4. Content-Based Pseudo Elements</div>
+    <p>These let you style or add extra stuff without touching HTML.</p>
+    <div class="selector">
+      <p>🔠 <code>::first-letter</code> – Styles the first letter of the text.</p>
+      <p>📝 <code>::first-line</code> – Styles the first line of the paragraph only.</p>
+      <p>🪄 <code>::before</code> – Inserts content before an element.</p>
+      <p>🪄 <code>::after</code> – Inserts content after an element.</p>
+    </div>
+    <div class="example example-area">
+      <p class="before-example">This uses <code>::before</code> to show a symbol.</p>
+      <p class="after-example">This uses <code>::after</code> to show a symbol.</p>
+      <p>This paragraph will have its first line bold.</p>
+    </div>
+  </div>
+
+  <!-- CSS Units Explanation Section -->
+  <div class="section">
+    <div class="emoji">📏 CSS Units: px, em, rem</div>
+    <p>Understanding how different CSS units work helps create responsive and scalable designs.</p>
+    <div class="selector">
+      <p><strong>px</strong> – Absolute unit, fixed pixel size (e.g., <code>16px</code> is always 16 pixels).</p>
+      <p><strong>em</strong> – Relative to the <em>parent</em> element’s font size. Can compound when nested.</p>
+      <p><strong>rem</strong> – Relative to the <em>root (&lt;html&gt;)</em> element’s font size. Consistent and does not compound.</p>
+    </div>
+
+    <div class="emoji">🔍 Difference Between <code>em</code> and <code>rem</code></div>
+    <p>
+      <strong>em:</strong> Scales based on the parent’s font size. Nesting can multiply sizes.
+      <br />
+      <strong>rem:</strong> Always based on the root font size, regardless of nesting, making it more predictable.
+    </p>
+
+    <div class="example example-area">
+      <p><strong>Example of <code>em</code> compounding:</strong></p>
+      <ul>
+        <li>Body font-size: 16px</li>
+        <li>div font-size: 1.5em (1.5 × 16px = 24px)</li>
+        <li>p inside div font-size: 2em (2 × 24px = 48px)</li>
+      </ul>
+
+      <p><strong>Example of <code>rem</code> consistent sizing:</strong></p>
+      <ul>
+        <li>Root font-size: 16px</li>
+        <li>div font-size: 1.5rem (1.5 × 16px = 24px)</li>
+        <li>p inside div font-size: 2rem (2 × 16px = 32px)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Exam Question Section -->
+  <div class="exam">
+    <h3>Exam Question</h3>
+    <p>
+      Given the following CSS:
+    </p>
+    <pre>
+p:hover {
+  background-color: #ff8;
+}
+
+li::first-letter {
+  color: red;
+}
+
+li:nth-child(even) {
+  background-color: gray;
+}
+
+li:nth-child(2) {
+  color: green;
+}
+
+li:last-child {
+  color: blue;
+}
+    </pre>
+    <p>
+      Which list items will have a gray background, and what color will the first letter of each list item be?
+    </p>
+  </div>
+<div class="boxx">
+
+<p class="box"><a href="#"> Box</a></p>
+
+
+
+
+
+</div>
+
+<p class="box01"> Hello world!</p>
+
+
+</body>
+</html>
